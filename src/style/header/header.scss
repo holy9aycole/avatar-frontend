@@ -1,0 +1,33 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    background: $background-0-color;
+    .header__logo {
+        margin-right: 5rem;
+        color: $background-1-color;
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+    .header__nav {
+        display: flex;
+        padding: 0 1rem;
+        border-radius: .3rem;
+        background: $background-1-color;
+        box-shadow: 0 5px 5px 0 rgba(#000, .2);
+        .header__nav__link {
+            padding: .5rem 1.5rem;
+            margin: 0 1px;
+            color: $background-0-color;
+            transition: .3s;
+            font-size: $medium;
+            &:hover {
+                box-shadow: 0 -2px 0 0 #ddd inset;
+            }
+            &.active {
+                box-shadow: 0 -2px 0 0 #fff inset;
+            }
+        }
+    }
+}

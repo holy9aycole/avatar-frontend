@@ -1,0 +1,48 @@
+@import "./variables.scss";
+@import "./header/header.scss";
+@import "./footer/footer.scss";
+@import "./home/home.scss";
+@import "./forecast/forecast.scss";
+@import "./proyect/proyect.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: serif;
+    font-size: 16px;
+}
+
+#root {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "header"
+                         "main";
+    min-height: 100vh;
+
+    header {
+        grid-area: header;
+    }
+    main {
+        grid-area: main;
+    }
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+button:focus, input:focus {
+    outline: none;
+}

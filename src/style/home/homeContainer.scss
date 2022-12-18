@@ -1,0 +1,27 @@
+.home__container {
+    .home__container__co2 {
+        border: 1px solid #ccc;
+        padding: 2rem;
+        max-width: 45rem;
+        margin: 2rem auto;
+        .container__co2__title {
+            color: $text-1-color;
+            font-weight: 500;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+        .container__co2__info {
+            display: inline-block;
+            width: 100%;
+            margin-top: 1rem;
+            font-size: $subtitle;
+            text-align: center;
+            color: $text-2-color;
+        }
+        .co2__progress {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+    }
+}

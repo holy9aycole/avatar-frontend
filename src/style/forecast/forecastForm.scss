@@ -1,0 +1,50 @@
+.forecast__form {
+    max-width: 45rem;
+    margin: 1rem auto 0;
+    padding: 2rem;
+    border: 1px solid #ccc;
+    height: max-content;
+    .forecast__form__title {
+        color: $text-1-color;
+        font-weight: 500;
+        font-size: 1.3rem;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    .forecast__form__container {
+        display: flex;
+        flex-direction: column;
+        .forecast__form__item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 1rem;
+            margin-top: 1rem;
+            align-items: center;
+            label {
+                justify-self: end;
+            }
+            input, select {
+                display: inline-block;
+                width: 100%;
+                justify-self: start;
+                height: 2.5rem;
+                border: 1px solid $text-3-color;
+                border-radius: .2rem;
+                padding: .5rem;
+                &:focus {
+                    border: 1px solid $background-1-color;
+                    outline: none;
+                }
+            }
+        }
+        .forecast__form__btn {
+            margin: 3rem auto;
+            padding: .5rem 1rem;
+            background: $background-1-color;
+            border: none;
+            border-radius: .2rem;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
+}
