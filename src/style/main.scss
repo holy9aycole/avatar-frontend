@@ -4,12 +4,13 @@
 @import "./home/home.scss";
 @import "./forecast/forecast.scss";
 @import "./proyect/proyect.scss";
+@import "./proyectSingle/proyectSingle.scss";
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: serif;
+    font-family: sans-serif;
     font-size: 16px;
 }
 

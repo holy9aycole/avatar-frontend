@@ -4,12 +4,18 @@ import { API } from "../App";
 
 const ForecastForm = ({ handleSubmit }) => {
   const [brands, setBrands] = useState([]);
+  const [projects, setProjects] = useState([]);
+
   useEffect(() => {
     console.log({ API: API + "/brand" });
     fetch(API + "/brand")
       .then((res) => res.json())
       .then((data) => {
-        if (data.status == "OK") setBrands(data.brands);
+        if (data.status == "OK") {
+          setBrands(data.brands);
+          setProjects(data.projects);
+        }
+        // setProjects((prev) => ["- proyecto -", ...prev]);
         setBrands((prev) => ["- marca -", ...prev]);
       })
       .catch((err) => console.error(err));
@@ -22,6 +28,18 @@ const ForecastForm = ({ handleSubmit }) => {
       </h2>
       <div className="forecast__form__container">
         <div className="forecast__form__item">
+          <label htmlFor="period" className="forecast__form__label">
+            Proyecto:
+          </label>
+          <select name="period" id="period" required>
+            {projects.map((project) => (
+              <option value={project} key={project}>
+                {project}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="forecast__form__item">
           <label htmlFor="driver" className="forecast__form__label">
             Nombre completo del conductor:
           </label>
@@ -30,6 +48,7 @@ const ForecastForm = ({ handleSubmit }) => {
             name="driver"
             id="driver"
             placeholder="nombre completo"
+            required
           />
         </div>
         <div className="forecast__form__item">
@@ -41,13 +60,14 @@ const ForecastForm = ({ handleSubmit }) => {
             name="carRegistration"
             id="carRegistration"
             placeholder="matrícula"
+            required
           />
         </div>
         <div className="forecast__form__item">
           <label htmlFor="carType" className="forecast__form__label">
             Tipo de coche:
           </label>
-          <select name="carType" id="carType">
+          <select name="carType" id="carType" required>
             {brands.map((brand) => (
               <option value={brand} key={brand}>
                 {brand}
@@ -59,22 +79,15 @@ const ForecastForm = ({ handleSubmit }) => {
           <label htmlFor="km" className="forecast__form__label">
             Kilómetros recorridos durante el último año:
           </label>
-          <input type="text" name="km" id="km" placeholder="kilómetros" />
-        </div>
-        <div className="forecast__form__item">
-          <label htmlFor="lifetime" className="forecast__form__label">
-            Tiempo de vida del coche (en años):
-          </label>
           <input
             type="text"
-            name="lifetime"
-            id="lifetime"
-            placeholder="Tiempo de vida"
+            name="km"
+            id="km"
+            placeholder="kilómetros"
+            required
           />
         </div>
-        <button className="forecast__form__btn">
-          Pronosticar <CO2Span />
-        </button>
+        <button className="forecast__form__btn">Registrar vehículo</button>
       </div>
     </form>
   );

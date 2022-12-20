@@ -1,0 +1,15 @@
+.chart__brand {
+    margin-left: 10rem;
+    .chart__period__bar{
+        .chart__period__co2 {
+            position: absolute;
+            left: -10rem;
+        }
+        .chart__period__progress {
+            font-size: $medium;
+        }
+        .chart__period__text {
+            font-size: $medium;
+        }
+    }
+}

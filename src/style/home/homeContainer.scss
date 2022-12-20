@@ -7,14 +7,15 @@
         .container__co2__title {
             color: $text-1-color;
             font-weight: 500;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             text-align: center;
         }
         .container__co2__info {
             display: inline-block;
             width: 100%;
+            font-weight: normal;
             margin-top: 1rem;
-            font-size: $subtitle;
+            font-size: $title;
             text-align: center;
             color: $text-2-color;
         }
@@ -22,6 +23,45 @@
             display: flex;
             justify-content: center;
             margin-top: 1rem;
+        }
+        .container__co2__text {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            margin-top: .5rem;
+            font-size: 1.2rem;
+        }
+    }
+    .home__container__figure {
+        height: 16rem;
+        max-width: 45rem;
+        margin: 0 auto;
+    }
+    .home__container__brand {
+        max-width: 45rem;
+        margin: 2rem auto 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 2rem;
+        justify-content: center;
+        .container__brand__item {
+            .container__brand__name {
+                text-align: center;
+                font-size: $title;
+                color: $text-2-color;
+            }
+            .container__brand__co2 {
+                margin-top: .5rem;
+                display: inline-block;
+                width: 100%;
+                text-align: center;
+                font-size: $subtitle;
+                color: $text-1-color;
+                font-weight: 600;
+                span {
+                    font-size: $medium;
+                }
+            }
         }
     }
 }

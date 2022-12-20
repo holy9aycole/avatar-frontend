@@ -1,0 +1,33 @@
+@import "./chartPeriod.scss";
+@import "./chartBrand.scss";
+@import "./chartRecommendation.scss";
+
+.proyect__single {
+    min-width: 45rem;
+    margin: 2rem auto;
+    .proyect__single__title {
+        font-size: $title;
+        color: $text-1-color;
+    }
+    .proyect__single__subtitle {
+        margin-top: 3rem;
+        font-size: $subtitle;
+        color: $text-1-color;
+    }
+    .proyect__single__vehicles {
+        margin-top: 1rem;
+        .proyect__single__icon {
+            $size: .92rem;
+            display: inline-block;
+            width: $size;
+            height: $size;
+            border-radius: 50%;
+            background: $background-1-color;
+        }
+        .proyect__single__text {
+            margin-left: 1rem;
+            font-size: $subtitle;
+            color: $text-1-color;
+        }
+    }
+}

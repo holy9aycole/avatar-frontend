@@ -1,6 +1,9 @@
 .home__container__map {
-    background: $background-1-color;
     max-width: 45rem;
     min-height: 15rem;
-    margin: 1rem auto;
+    margin: 4rem auto 2rem;
+    .container__map__title {
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
 }

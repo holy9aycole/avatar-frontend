@@ -7,27 +7,37 @@ import ForecastForm from "./ForecastForm";
 
 const Forecast = () => {
   const [forecasted, setForecasted] = useState(false);
+  /* cantidad total de coches registrados durante el periodo */
+  const [carType, setCarType] = useState("");
+  /* cantidad total de coches de la marca especificada registradas durante el periodo */
+  const [carRegistration, setCarRegistration] = useState("");
+  /*  */
+  const [period, setPeriod] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
 
+    const period = formData.get("period");
     const driver = formData.get("driver");
     const carRegistration = formData.get("carRegistration");
     const carType = formData.get("carType");
     const km = formData.get("km");
-    const lifetime = formData.get("lifetime");
 
-    console.log({ driver, carRegistration, carType, km, lifetime });
+    console.log({ driver, carRegistration, carType, km });
     fetch(API + "/forecast", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ driver, carRegistration, carType, km, lifetime }),
+      body: JSON.stringify({ period, driver, carRegistration, carType, km }),
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "OK") {
+          console.log({ data });
           setForecasted(true);
+          setPeriod(period);
+          setCarType(carType);
+          setCarRegistration(carRegistration);
         }
       });
   };
@@ -38,7 +48,11 @@ const Forecast = () => {
       {forecasted === false ? (
         <ForecastForm handleSubmit={handleSubmit} />
       ) : (
-        <ForecastResult />
+        <ForecastResult
+          carType={carType}
+          carRegistration={carRegistration}
+          period={period}
+        />
       )}
       <Footer />
     </>

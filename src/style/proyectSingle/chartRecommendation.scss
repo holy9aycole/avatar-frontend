@@ -1,0 +1,79 @@
+.chart__recommendation {
+    margin: 4rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 45rem;
+    .chart__recommendation__container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+        .chart__recommendation__car, .chart__recommendation__plan {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            .chart__recommendation__figure {
+                position: relative;
+                $size: 8rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: $size;
+                width: $size;
+                border-radius: 50%;
+                border: 1px solid $background-1-color;
+                font-size: $title;
+                font-weight: 600;
+                .chart__recommendation__title {
+                    position: absolute;
+                    top: -2rem;
+                    font-size: $title;
+                    color: $text-2-color;
+                }
+            }
+            .chart__recommendation__icon {
+                font-size: 5rem;
+                width: 7rem;
+                height: 6rem;
+            }
+        }
+        .chart__recommendation__car {
+            .chart__recommendation__icon {
+                margin-left: 2rem;
+            }
+        }
+        .chart__recommendation__plan {
+            .chart__recommendation__icon {
+                margin-right: 2rem;
+            }
+        }
+    }
+    .chart__recommendation__plans {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 1rem);
+        grid-gap: .5rem;
+        justify-content: center;
+        height: 15rem;
+        border: 1px solid #ccc;
+        overflow: hidden;
+        padding: 1rem;
+        img {
+            height: 2rem;
+            width: 1rem;
+        }
+    }
+    .chart__recommendation__rest {
+        display: inline-block;
+        width: 100%;
+        margin-top: 1rem;
+        font-size: 2rem;
+        text-align: center;
+        color: green;
+        img {
+            margin-left: .5rem;
+            height: 1.5rem;
+            width: 1rem;
+        }
+    }
+}

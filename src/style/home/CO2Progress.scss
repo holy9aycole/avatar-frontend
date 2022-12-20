@@ -1,6 +1,6 @@
 .co2__progress {
     .co2__progress__percentage {
-        $out_circule_size: 5rem;
+        $out_circule_size: 7rem;
         height: $out_circule_size;
         width: $out_circule_size;
         position: relative;
@@ -19,9 +19,9 @@
         }
         .co2__progress__value {
             position: relative;
-            font-size: $title;
+            font-size: 1.5rem;
             font-weight: 500;
-            color: $background-1-color;
+            color: #000;
         }
     }
 }

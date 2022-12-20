@@ -19,9 +19,9 @@ const Header = () => (
         className={({ isActive }) =>
           isActive == true ? "header__nav__link active" : "header__nav__link"
         }
-        to="/pronostico"
+        to="/registro"
       >
-        Nuevo pronóstico
+        Registro de vehículo
       </NavLink>
       <NavLink
         className={({ isActive }) =>
@@ -30,14 +30,6 @@ const Header = () => (
         to="/proyectos"
       >
         Proyectos
-      </NavLink>
-      <NavLink
-        className={({ isActive }) =>
-          isActive == true ? "header__nav__link active" : "header__nav__link"
-        }
-        to="/sobre-nosotros"
-      >
-        Sobre nosotros
       </NavLink>
     </nav>
   </header>

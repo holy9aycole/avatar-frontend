@@ -1,0 +1,19 @@
+.forecast__result {
+    max-width: 45rem;
+    margin: 2rem auto;
+    .forecast__result__title {
+        font-size: $title;
+        color: $text-1-color;
+        margin-bottom: 1rem;
+    }
+    .forecast__result__link {
+        display: flex;
+        margin-top: 1rem;
+        padding: .5rem 1rem;
+        width: max-content;
+        border-radius: .2rem;
+        background-color: $background-1-color;
+        color: #fff;
+        cursor: pointer;
+    }
+}

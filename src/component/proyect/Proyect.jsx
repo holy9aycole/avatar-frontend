@@ -6,34 +6,54 @@ import ProyectContainer from "./ProyectContainer";
 import ProyectHeader from "./ProyectHeader";
 
 const Proyect = () => {
-  const [proyects, setProyects] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [page, setPage] = useState(1);
 
   const handleSearch = (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const proyect = formData.get("proyect");
+    const project = formData.get("project");
 
-    console.log({ search: proyect });
+    if (project.length === 0) return;
+
+    fetch(API + "/project?project=" + project)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "OK") {
+          setProjects(data.projects);
+        }
+      });
   };
 
   const handleCreate = (e) => {
     e.preventDefault();
+    const form = e.currentTarget;
     const formData = new FormData(e.currentTarget);
-    const proyect = formData.get("proyect");
+    const project = formData.get("project");
 
-    console.log({ create: proyect });
+    if (project.length === 0) return;
+
+    fetch(API + "/project", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ project }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status == "OK") setPage(2);
+        form.reset();
+      });
   };
 
   useEffect(() => {
-    fetch(API + "/proyect")
+    fetch(API + "/project")
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "OK") {
-          // setProyects(data.proyects);
-          setProyects([]);
+          setProjects(data.projects);
         }
       });
-  }, []);
+  }, [page]);
 
   return (
     <>
@@ -43,7 +63,7 @@ const Proyect = () => {
           handleSearch={handleSearch}
           handleCreate={handleCreate}
         />
-        <ProyectContainer proyects={proyects} />
+        <ProyectContainer projects={projects} />
       </main>
       <Footer />
     </>

@@ -1,0 +1,36 @@
+.chart__period {
+    margin-top: 2rem;
+    margin-left: 3rem;
+    border-left: 2px solid $background-1-color;
+    .chart__period__bar{
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: 2rem;
+        .chart__period__co2 {
+            position: absolute;
+            left: -3rem;
+        }
+        .chart__period__progress {
+            background: $background-1-color;
+            color: #fff;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-right: 1rem;
+            padding: .3rem .5rem;
+            display: inline-block;
+            font-size: $subtitle;
+            border-radius: 0 .2rem .2rem 0;
+            &.year {
+                width: 31rem;
+            }
+            &.day {
+                width: 7rem;
+
+            }
+        }
+        .chart__period__text {
+            font-size: $subtitle;
+        }
+    }
+}
