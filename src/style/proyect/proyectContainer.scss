@@ -1,9 +1,9 @@
 @import "./proyectItem.scss";
 
 .proyect__container {
-    min-width: 45rem;
+    max-width: 50rem;
     margin: 1rem auto;
     display: grid;
-    grid-template-columns: repeat(3, minmax(8rem , 1fr));
+    grid-template-columns: repeat(3, minmax(10rem , 1fr));
     grid-gap: 2rem;
 }

@@ -1,5 +1,6 @@
 .proyect__item {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
     padding: 1rem;
@@ -12,6 +13,11 @@
     }
     .proyect__item__period {
         font-size: 1.5rem;
+        color: $text-1-color;
+    }
+    .proyect__item__span {
+        text-align: center;
+        font-size: $medium;
         color: $text-1-color;
     }
 }

@@ -7,6 +7,7 @@ import ProyectHeader from "./ProyectHeader";
 
 const Proyect = () => {
   const [projects, setProjects] = useState([]);
+  const [cars, setCars] = useState([]);
   const [page, setPage] = useState(1);
 
   const handleSearch = (e) => {
@@ -21,6 +22,7 @@ const Proyect = () => {
       .then((data) => {
         if (data.status === "OK") {
           setProjects(data.projects);
+          setCar(data.car);
         }
       });
   };
@@ -51,6 +53,9 @@ const Proyect = () => {
       .then((data) => {
         if (data.status === "OK") {
           setProjects(data.projects);
+          setCars(data.cars);
+          console.log(data.projects);
+          console.log(data.cars);
         }
       });
   }, [page]);
@@ -63,7 +68,7 @@ const Proyect = () => {
           handleSearch={handleSearch}
           handleCreate={handleCreate}
         />
-        <ProyectContainer projects={projects} />
+        <ProyectContainer projects={projects} cars={cars} />
       </main>
       <Footer />
     </>

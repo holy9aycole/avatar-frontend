@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Chart from "react-google-charts";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { API } from "../App";
 import Footer from "../footer/Footer";
 import Header from "../header/Header";
@@ -17,7 +17,7 @@ const ProyectSingle = () => {
   const dataCO2 = project.forecastByBrand
     ? project.forecastByBrand.map((brand) => [
         brand.brand_name,
-        parseFloat(brand.forecast_co2) / 100,
+        parseFloat(brand.forecast_co2) / 1000,
       ])
     : [];
 
@@ -34,13 +34,10 @@ const ProyectSingle = () => {
       .then((data) => {
         if (data.status === "OK") {
           setProject(data.project);
+          console.log(data.project);
         }
       });
   }, []);
-
-  useEffect(() => {
-    console.log(project);
-  }, [project]);
 
   return (
     <>
@@ -54,6 +51,9 @@ const ProyectSingle = () => {
           <span className="proyect__single__text">
             {project.registerCars} coches registrados
           </span>
+          <Link className="proyect__single__link" to={"/car/" + period}>
+            Ver vehículos
+          </Link>
         </div>
         <div className="proyect__single__vehicles">
           <span className="proyect__single__icon"></span>
@@ -62,28 +62,32 @@ const ProyectSingle = () => {
           </span>
         </div>
         <section className="proyect__single__bar-chart">
-          <Chart
-            chartType="ColumnChart"
-            data={[["Marca", "CO2 emitido (kg)"], ...dataCO2]}
-            options={{
-              title: "Dencidad de emision de CO2 por marca",
-              width: 600,
-              height: 600,
-              bar: { groupWith: "95%" },
-              legend: { position: "none" },
-            }}
-          />
-          <Chart
-            chartType="ColumnChart"
-            data={[["Marca", "CO2 emitido (kg)"], ...dataCar]}
-            options={{
-              title: "Dencidad de vehículos registrados",
-              width: 600,
-              height: 600,
-              bar: { groupWith: "95%" },
-              legend: { position: "none" },
-            }}
-          />
+          {dataCO2.length ? (
+            <Chart
+              chartType="ColumnChart"
+              data={[["Marca", "CO2 emitido (kg)"], ...dataCO2]}
+              options={{
+                title: "Dencidad de emision de CO2 por marca",
+                width: 600,
+                height: 600,
+                bar: { groupWith: "95%" },
+                legend: { position: "none" },
+              }}
+            />
+          ) : null}
+          {dataCar.length ? (
+            <Chart
+              chartType="ColumnChart"
+              data={[["Marca", "CO2 emitido (kg)"], ...dataCar]}
+              options={{
+                title: "Dencidad de vehículos registrados",
+                width: 600,
+                height: 600,
+                bar: { groupWith: "95%" },
+                legend: { position: "none" },
+              }}
+            />
+          ) : null}
         </section>
         <div className="proyect__single__data"></div>
         {/*<h3 className="proyect__single__subtitle">
