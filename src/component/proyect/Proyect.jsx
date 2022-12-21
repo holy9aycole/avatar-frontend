@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 import { API } from "../App";
 import Footer from "../footer/Footer";
 import Header from "../header/Header";
 import ProyectContainer from "./ProyectContainer";
 import ProyectHeader from "./ProyectHeader";
 
-const Proyect = () => {
+const Proyect = ({ user }) => {
   const [projects, setProjects] = useState([]);
   const [cars, setCars] = useState([]);
   const [page, setPage] = useState(1);
@@ -22,7 +23,7 @@ const Proyect = () => {
       .then((data) => {
         if (data.status === "OK") {
           setProjects(data.projects);
-          setCar(data.car);
+          setCars(data.car);
         }
       });
   };

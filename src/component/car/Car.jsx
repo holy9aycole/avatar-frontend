@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { API } from "../App";
 import Footer from "../footer/Footer";
 import Header from "../header/Header";
 import CO2Span from "../home/CO2Span";
 
-const Car = () => {
+const Car = ({ user }) => {
   const { pathname } = useLocation();
   const period = pathname.substring(pathname.lastIndexOf("/") + 1);
 
@@ -23,7 +23,7 @@ const Car = () => {
 
   console.log(cars);
 
-  return (
+  return user.name ? (
     <>
       <Header />
       <main className="car">
@@ -56,6 +56,8 @@ const Car = () => {
       </main>
       <Footer />
     </>
+  ) : (
+    <Navigate to="/login" />
   );
 };
 

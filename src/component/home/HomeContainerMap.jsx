@@ -33,7 +33,7 @@ const HomeContainerMap = ({ forecasts }) => {
             ...forecastData,
           ]}
           options={{
-            title: "Dencidad de emision de CO2 en kg/año",
+            title: "Densidad de emision de CO2 en kg/año",
             width: 600,
             height: 600,
             bar: { groupWith: "95%" },

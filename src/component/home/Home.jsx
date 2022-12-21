@@ -3,8 +3,9 @@ import { API } from "../App";
 import Footer from "../footer/Footer";
 import Header from "../header/Header";
 import HomeContainer from "./HomeContainer";
+import { Navigate } from "react-router-dom";
 
-const Home = () => {
+const Home = ({ user }) => {
   /* cantidad de co2 emitido en nuestro pais (en kg) */
   const [co2Local, setCo2Local] = useState(0);
   /* cantidad de co2 emitido a nivel mundial (en kg) */
@@ -46,7 +47,7 @@ const Home = () => {
       });
   }, []);
 
-  return (
+  return user.name ? (
     <>
       <Header />
       <HomeContainer
@@ -57,6 +58,8 @@ const Home = () => {
       />
       <Footer />
     </>
+  ) : (
+    <Navigate to="/login" />
   );
 };
 

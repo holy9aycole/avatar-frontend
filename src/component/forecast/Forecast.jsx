@@ -4,8 +4,9 @@ import Footer from "../footer/Footer";
 import Header from "../header/Header";
 import ForecastResult from "./ForecastResult";
 import ForecastForm from "./ForecastForm";
+import { Navigate } from "react-router-dom";
 
-const Forecast = () => {
+const Forecast = ({ user }) => {
   const [forecasted, setForecasted] = useState(false);
   /* cantidad total de coches registrados durante el periodo */
   const [carType, setCarType] = useState("");
@@ -42,7 +43,7 @@ const Forecast = () => {
       });
   };
 
-  return (
+  return user.name ? (
     <>
       <Header />
       {forecasted === false ? (
@@ -56,6 +57,8 @@ const Forecast = () => {
       )}
       <Footer />
     </>
+  ) : (
+    <Navigate to="/login" />
   );
 };
 

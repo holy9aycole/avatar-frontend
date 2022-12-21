@@ -15,7 +15,7 @@ const ChartBrand = ({ forecastByBrand = [], forecast_co2 }) => {
         chartType="ColumnChart"
         data={[["Marca", "CO2 emitido (kg)", ""], ...data]}
         options={{
-          title: "Dencidad de emision de CO2 en kg/año",
+          title: "Densidad de emision de CO2 en kg/año",
           width: 600,
           height: 600,
           pointSize: 100,

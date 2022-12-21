@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Chart from "react-google-charts";
-import { Link, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import { API } from "../App";
 import Footer from "../footer/Footer";
 import Header from "../header/Header";
@@ -9,7 +9,7 @@ import ChartBrand from "./ChartBrand";
 import ChartPeriod from "./ChartPeriod";
 import ChartRecommendation from "./ChartRecommendation";
 
-const ProyectSingle = () => {
+const ProyectSingle = ({ user }) => {
   const [project, setProject] = useState({});
   const { pathname } = useLocation();
   const period = pathname.substring(pathname.lastIndexOf("/") + 1);
@@ -39,7 +39,7 @@ const ProyectSingle = () => {
       });
   }, []);
 
-  return (
+  return user.name ? (
     <>
       <Header />
       <main className="proyect__single">
@@ -67,7 +67,7 @@ const ProyectSingle = () => {
               chartType="ColumnChart"
               data={[["Marca", "CO2 emitido (kg)"], ...dataCO2]}
               options={{
-                title: "Dencidad de emision de CO2 por marca",
+                title: "Densidad de emision de CO2 por marca",
                 width: 600,
                 height: 600,
                 bar: { groupWith: "95%" },
@@ -80,7 +80,7 @@ const ProyectSingle = () => {
               chartType="ColumnChart"
               data={[["Marca", "CO2 emitido (kg)"], ...dataCar]}
               options={{
-                title: "Dencidad de vehículos registrados",
+                title: "Densidad de vehículos registrados",
                 width: 600,
                 height: 600,
                 bar: { groupWith: "95%" },
@@ -101,6 +101,8 @@ const ProyectSingle = () => {
       </main>
       <Footer />
     </>
+  ) : (
+    <Navigate to="/login" />
   );
 };
 
