@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Chart from "react-google-charts";
 import { useLocation } from "react-router-dom";
 import { API } from "../App";
 import Footer from "../footer/Footer";
@@ -12,6 +13,20 @@ const ProyectSingle = () => {
   const [project, setProject] = useState({});
   const { pathname } = useLocation();
   const period = pathname.substring(pathname.lastIndexOf("/") + 1);
+
+  const dataCO2 = project.forecastByBrand
+    ? project.forecastByBrand.map((brand) => [
+        brand.brand_name,
+        parseFloat(brand.forecast_co2) / 100,
+      ])
+    : [];
+
+  const dataCar = project.forecastByBrand
+    ? project.forecastByBrand.map((brand) => [
+        brand.brand_name,
+        parseInt(brand.registerCars),
+      ])
+    : [];
 
   useEffect(() => {
     fetch(API + "/project/" + period)
@@ -46,16 +61,39 @@ const ProyectSingle = () => {
             {project.totalForecast}kg de <CO2Span />
           </span>
         </div>
-        {/*<ChartPeriod forecast_co2={project.totalForecast} period={period} /> */}
+        <section className="proyect__single__bar-chart">
+          <Chart
+            chartType="ColumnChart"
+            data={[["Marca", "CO2 emitido (kg)"], ...dataCO2]}
+            options={{
+              title: "Dencidad de emision de CO2 por marca",
+              width: 600,
+              height: 600,
+              bar: { groupWith: "95%" },
+              legend: { position: "none" },
+            }}
+          />
+          <Chart
+            chartType="ColumnChart"
+            data={[["Marca", "CO2 emitido (kg)"], ...dataCar]}
+            options={{
+              title: "Dencidad de vehículos registrados",
+              width: 600,
+              height: 600,
+              bar: { groupWith: "95%" },
+              legend: { position: "none" },
+            }}
+          />
+        </section>
         <div className="proyect__single__data"></div>
-        <h3 className="proyect__single__subtitle">
+        {/*<h3 className="proyect__single__subtitle">
           Emisión de <CO2Span /> por marca
         </h3>
         <ChartBrand
           forecast_co2={project.totalForecast}
           forecastByBrand={project.forecastByBrand}
-        />
-        <ChartRecommendation forecast_co2={project.totalForecast} />
+        />*/}
+        {/*<ChartRecommendation forecast_co2={project.totalForecast} /> */}
       </main>
       <Footer />
     </>

@@ -1,28 +1,28 @@
 import React from "react";
+import Chart from "react-google-charts";
+import CO2Span from "../home/CO2Span";
 
-const ChartBrand = ({ forecastByBrand = [], forecast_co2 }) => (
-  <div className="chart__period chart__brand">
-    {forecastByBrand.map((forecast) => {
-      const percentage = (
-        (forecast.forecast_co2 / (forecast_co2 * 1000)) *
-        100
-      ).toFixed(2);
-      return (
-        <div className="chart__period__bar" key={forecast.brand_name}>
-          <span className="chart__period__co2">
-            {forecast.brand_name} - <span>{percentage} %</span>
-          </span>
-          <span
-            className="chart__period__progress"
-            style={{ width: percentage + 400 + "%" }}
-          ></span>
-          <span className="chart__period__text">
-            {forecast.forecast_co2 / 1000} kg
-          </span>
-        </div>
-      );
-    })}
-  </div>
-);
+const ChartBrand = ({ forecastByBrand = [], forecast_co2 }) => {
+  const data = forecastByBrand.map((brand) => [
+    brand.brand_name,
+    parseFloat(brand.forecast_co2) / 100,
+    parseInt(brand.registerCars),
+  ]);
+
+  return (
+    <div className="chart__brand">
+      <Chart
+        chartType="ColumnChart"
+        data={[["Marca", "CO2 emitido (kg)", ""], ...data]}
+        options={{
+          title: "Dencidad de emision de CO2 en kg/año",
+          width: 600,
+          height: 600,
+          pointSize: 100,
+        }}
+      />
+    </div>
+  );
+};
 
 export default ChartBrand;

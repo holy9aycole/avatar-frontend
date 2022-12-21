@@ -1,15 +1,25 @@
 .chart__brand {
     margin-left: 10rem;
     .chart__period__bar{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 2rem;
+        .chart__period__brand {
+            background: red;
+        }
         .chart__period__co2 {
-            position: absolute;
-            left: -10rem;
+            // position: absolute;
+            // left: -10rem;
         }
         .chart__period__progress {
-            font-size: $medium;
+            // font-size: $medium;
+            span {
+                display: inline-block;
+                background: red;
+            }
         }
         .chart__period__text {
-            font-size: $medium;
+            // font-size: $medium;
         }
     }
 }
